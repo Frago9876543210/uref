@@ -12,7 +12,7 @@ php:
 
 env:
   global:
-    - LLVM_CONFIG=llvm-config
+    - LLVM_CONFIG=llvm-config-6.0
     - REPORT_EXIT_STATUS=1
     - RULE="all"
     - DEF="-q --show-diff"
@@ -23,7 +23,7 @@ env:
 before_script:
   - echo "variables_order=EGPCS"                 >> $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/php.ini
   - echo                                          > $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini
-  - echo "extension=uref.so"                     > $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/uref.ini
+  - echo "extension=uref"                         > $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/uref.ini
   - echo "opcache.enable_cli=$OPCACHE"            > $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/opcache.ini
   - echo "opcache.optimization_level=0x7FFEBFFF" >> $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/opcache.ini
 
