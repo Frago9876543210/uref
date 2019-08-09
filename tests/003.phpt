@@ -11,8 +11,8 @@ if (!extension_loaded('uref')) {
 $std1 = new stdClass;
 $std2 = new stdClass;
 
-$u1 = new uref($std1);
-$u2 = new uref($std2);
+$u1 = new WeakReference($std1);
+$u2 = new WeakReference($std2);
 
 var_dump($u1->valid());
 var_dump($u2->valid());

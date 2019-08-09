@@ -10,8 +10,8 @@ if (!extension_loaded('uref')) {
 <?php
 $std = new stdClass;
 
-$u   = new uref($std);
-$u2  = new uref($std);
+$u   = new WeakReference($std);
+$u2  = new WeakReference($std);
 
 var_dump($u->valid());
 var_dump($u2->valid());

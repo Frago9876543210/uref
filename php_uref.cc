@@ -263,7 +263,7 @@ static zend_object* php_uref_clone(zval *zv) {
 
 #define php_uref_unsupported(thing) \
 	zend_throw_exception_ex( \
-		spl_ce_RuntimeException, 0, "uref objects do not support " thing);
+		spl_ce_RuntimeException, 0, "WeakReference objects do not support " thing);
 
 static void php_uref_write(zval *object, zval *member, zval *value, void **rtc) {
 	php_uref_unsupported("properties");
@@ -342,7 +342,7 @@ ZEND_BEGIN_ARG_INFO_EX(php_uref_construct_arginfo, 0, 0, 1)
 	ZEND_ARG_INFO(0, object)
 ZEND_END_ARG_INFO()
 
-PHP_METHOD(uref, __construct) 
+PHP_METHOD(WeakReference, __construct)
 {
 	php_uref_t *u = php_uref_fetch(getThis());
 	zval *object = NULL;
@@ -362,7 +362,7 @@ PHP_METHOD(uref, __construct)
 	php_uref_protect();
 }
 
-PHP_METHOD(uref, valid)
+PHP_METHOD(WeakReference, valid)
 {
 	php_uref_t *u =
 		php_uref_fetch(getThis());
@@ -370,7 +370,7 @@ PHP_METHOD(uref, valid)
 	RETURN_BOOL(Z_TYPE(u->referent) != IS_UNDEF);
 }
 
-PHP_METHOD(uref, get) 
+PHP_METHOD(WeakReference, get)
 {
 	php_uref_t *u = 
 		php_uref_fetch(getThis());
@@ -381,9 +381,9 @@ PHP_METHOD(uref, get)
 }
 
 static zend_function_entry php_uref_methods[] = {
-	PHP_ME(uref, __construct, php_uref_construct_arginfo, ZEND_ACC_PUBLIC)
-	PHP_ME(uref, valid, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(uref, get, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(WeakReference, __construct, php_uref_construct_arginfo, ZEND_ACC_PUBLIC)
+	PHP_ME(WeakReference, valid, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(WeakReference, get, NULL, ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };
 
@@ -400,7 +400,7 @@ PHP_MINIT_FUNCTION(uref)
 
 	ZEND_INIT_MODULE_GLOBALS(uref, php_uref_init_globals, NULL);
 
-	INIT_CLASS_ENTRY(ce, "uref", php_uref_methods);
+	INIT_CLASS_ENTRY(ce, "WeakReference", php_uref_methods);
 
 	php_uref_ce = zend_register_internal_class(&ce);
 	php_uref_ce->create_object = php_uref_create;

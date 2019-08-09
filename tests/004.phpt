@@ -9,7 +9,7 @@ if (!extension_loaded('uref')) {
 --FILE--
 <?php
 $s = new stdClass;
-$u = new uref($s);
+$u = new WeakReference($s);
 
 $u2 = clone $u;
 
