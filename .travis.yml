@@ -1,18 +1,18 @@
+dist: bionic
 language: php
 addons:
   apt:
-    sources:
-      - llvm-toolchain-trusty-6.0
     packages:
-      - llvm-6.0
-      - llvm-6.0-dev
+      - clang
+      - llvm
+      - llvm-dev
 
 php:
   - 7.3
 
 env:
   global:
-    - LLVM_CONFIG=llvm-config-6.0
+    - LLVM_CONFIG=llvm-config
     - REPORT_EXIT_STATUS=1
     - RULE="all"
     - DEF="-q --show-diff"
