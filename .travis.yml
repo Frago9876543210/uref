@@ -8,10 +8,7 @@ addons:
       - llvm-5.0-dev
 
 php:
-  - 7.0
-  - 7.1
-  - 7.2
-  - nightly
+  - 7.3
 
 env:
   global:
