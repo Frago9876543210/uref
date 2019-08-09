@@ -14,6 +14,8 @@ $u   = new uref($std);
 
 var_dump($u->valid());
 var_dump($u->get());
+var_dump($u->get() === $std);
+
 
 unset($std);
 
@@ -22,8 +24,9 @@ var_dump($u->get());
 ?>
 --EXPECT--
 bool(true)
-object(stdClass)#1 (0) {
+object(stdClass)#%d (0) {
 }
+bool(true)
 bool(false)
 NULL
 
